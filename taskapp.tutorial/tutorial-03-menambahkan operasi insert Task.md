@@ -2,6 +2,7 @@
 ## Membuat `resource/views/tasks/index.blade.php`
 1. Download Bootstrap dan taruh di folder `public/bootstrap`.
 2. Ubah referensi bootstrap pada file `resource/views/layouts/app.blade.php` menjadi ke file lokal.
+   
     ```
     ...
         <link rel="stylesheet" href="{{ asset('bootstrap/dist/css/bootstrap.min.css') }}">
@@ -9,6 +10,7 @@
     ```
 3. Buat folder `tasks` pada folder `resources/views`.
 4. Buat file `index.blade.php` di folder `resources/views/tasks`.
+
     ```
     @extends('layouts.app')
     
@@ -78,6 +80,7 @@
 ## Menambahkan route `Tasks`
 1. Buka file `app/Http/routes.php`.
 2. Edit routes dengan menambahkan route Tasks.
+
     ```
     ...
     // Routing untuk resource tasks
@@ -87,6 +90,7 @@
 
 ## Update view `resources/views/layouts/app.blade.php`
 1. Tambahkan link ke resource `tasks` di atas bagian dropdown user.
+
     ```
     ...
         <li><a href="{{ route('tasks.index') }}">Tasks</a></li>
@@ -96,21 +100,25 @@
 ## Membuat View `Add New Task`
 ### Menambahkan file `create.blade.php`
 1. Tambahkan referensi `laravelcollective`. Tunggu sampai proses instalasi selesai.
+
     ```
     composer require laravelcollective/html
     ```
 2. Tambahkan referensi `providers` di `config/app.php`.
+
     ```
         // Laravel Collective provider
         Collective\Html\HtmlServiceProvider::class,
     ```
 3. Tambahkan referensi `alias` di `config/app.php`.
+
     ```
         // Laravel Collective Facade
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
     ```
 4. Buatlah file `create.blade.php` pada folder `resource/views/tasks/`. Tambahkan konten berikut.
+
     ```
     @extends('layouts.app')
     
@@ -141,13 +149,14 @@
     
     @stop
     ```
-
 ## Menambahkan model `Task`
 1. Buatlah model `Task` dengan menggunakan perintah berikut.
+
     ```
     php artisan make:model Task
     ```
 2. Edit file `app/Task.php` yang telah terbuat dengan menambahkan nama tabel (`$table`)dan nama field yang bisa di-_insert_ data (`$fillable`).
+
     ```
         class Task extends Model
         {
@@ -213,6 +222,7 @@ Laravel menyediakan fitur validasi input yang dapat dengan mudah digunakan. Seba
     ...
     ```
 2. Tambahkan handling `error flash_message` pada file `resources/views/tasks/create.blade.php`. Letakkan pada bagian atas sebelum form.
+
     ```
         @if($errors->any())
         <div class="alert alert-danger">
@@ -223,6 +233,7 @@ Laravel menyediakan fitur validasi input yang dapat dengan mudah digunakan. Seba
         @endif
     ```
 3. Tambahkan handling `success flash_message` pada file `resources/views/tasks/create.blade.php`. Letakkan pada bagian atas sebelum form.
+
     ```
         @if(Session::has('flash_message'))
             <div class="alert alert-success">
