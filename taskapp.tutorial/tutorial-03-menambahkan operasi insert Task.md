@@ -2,26 +2,26 @@
 ## Membuat `resource/views/tasks/index.blade.php`
 1. Download Bootstrap dan taruh di folder `public/bootstrap`.
 2. Ubah referensi bootstrap pada file `resource/views/layouts/app.blade.php` menjadi ke file lokal.
-```
-...
-    <link rel="stylesheet" href="{{ asset('bootstrap/dist/css/bootstrap.min.css') }}">
-...
-```
+    ```
+    ...
+        <link rel="stylesheet" href="{{ asset('bootstrap/dist/css/bootstrap.min.css') }}">
+    ...
+    ```
 3. Buat folder `tasks` pada folder `resources/views`.
 4. Buat file `index.blade.php` di folder `resources/views/tasks`.
-```
-@extends('layouts.app')
-
-@section('content')
-
-    <div class="container">
-        <h1>Task List</h1>
-            <p class="lead">Here's a list of all your tasks. <a href="{{ route('tasks.create') }}">Add a new one?</a></p>
-        <hr>
-    </div>
-
-@stop
-```
+    ```
+    @extends('layouts.app')
+    
+    @section('content')
+    
+        <div class="container">
+            <h1>Task List</h1>
+                <p class="lead">Here's a list of all your tasks. <a href="{{ route('tasks.create') }}">Add a new one?</a></p>
+            <hr>
+        </div>
+    
+    @stop
+    ```
 
 ## Membuat `TaskController`
 1. Lakukan `php artisan make:controller TasksController`
@@ -78,11 +78,11 @@
 ## Menambahkan route `Tasks`
 1. Buka file `app/Http/routes.php`.
 2. Edit routes dengan menambahkan route Tasks.
-```
-...
-// Routing untuk resource tasks
-Route::resource('tasks', 'TasksController');
-```
+    ```
+    ...
+    // Routing untuk resource tasks
+    Route::resource('tasks', 'TasksController');
+    ```
 3. Cek routing-nya dengan menggunakan `php artisan route:list`.
 
 ## Update view `resources/views/layouts/app.blade.php`
@@ -189,6 +189,7 @@ Route::resource('tasks', 'TasksController');
 
 ## Validasi Input
 Laravel menyediakan fitur validasi input yang dapat dengan mudah digunakan. Sebagai contohnya, kita dapat melakukan validasi input seperti berikut.
+
 1. Edit fungsi `store` di `TasksController` dengan menambahkan validasi input.
     ```
     ...
