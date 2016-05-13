@@ -242,7 +242,7 @@ Laravel menyediakan fitur validasi input yang dapat dengan mudah digunakan. Seba
             </div>
         @endif
     ```
-4. Tambahkan `include` file `Session` sebelum deklarasi kelas `TasksController`.
+4. Import library `Session` sebelum deklarasi kelas `TasksController`.
     ```
     ...
     use Illuminate\Support\Facades\Session;
